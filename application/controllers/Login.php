@@ -18,7 +18,7 @@ class Login extends CI_Controller {
         $user_email = $this->input->post('email');
         $user_password = $this->input->post('password');
 
-        if ($user_email == "admin@admin.com" && $user_password == "iL4v3Tat3Rs") {
+        if ($user_email == "admin@admin.com" && $user_password == "admin123") {
             $session_data = array(
                 'is_login' => 'Yes',
             );
