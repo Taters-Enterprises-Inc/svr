@@ -642,7 +642,15 @@ class Svr extends CI_Controller {
             $cashier_fullName = $cashier_record->fcashier_name;
             $cashier_declaredCash = $cashier_record->fcash_declare;
             $cashier_calculatedCash = $cashier_record->fcash;
-            $cashier_cashOver = $cashier_record->fother_diff;
+
+            $cashier_cashOver = 0;
+            $cashier_fover = $cashier_record->fover;
+
+            if ($cashier_fover > 0) {
+                $cashier_cashOver = $cashier_record->fover;
+            } else {
+                $cashier_cashOver = $cashier_record->fshort;
+            }
 
 
             // To get sum of credit card sales
