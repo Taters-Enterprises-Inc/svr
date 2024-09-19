@@ -922,45 +922,96 @@ class Svr extends CI_Controller {
             $sheet2->setCellValue('A' . $row2, $cashier_saleDate);
             $sheet2->setCellValue('B' . $row2, '');
             $sheet2->setCellValue('C' . $row2, $cashier_fullName);
+            
             $sheet2->setCellValue('D' . $row2, $cashier_declaredCash);
+            $sheet2->getStyle('D' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('E' . $row2, $cashier_calculatedCash);
+            $sheet2->getStyle('E' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('F' . $row2, '');
             $sheet2->setCellValue('G' . $row2, $cashier_cashOver);
             $sheet2->setCellValue('H' . $row2, '');
             $sheet2->setCellValue('I' . $row2, '');
             $sheet2->setCellValue('J' . $row2, '');
             $sheet2->setCellValue('K' . $row2, '');
+
             $sheet2->setCellValue('L' . $row2, $cashier_credit_card_sales);
+            $sheet2->getStyle('L' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('M' . $row2, '');
             $sheet2->setCellValue('N' . $row2, '');
+
             $sheet2->setCellValue('O' . $row2, $cashier_gc);
+            $sheet2->getStyle('O' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('P' . $row2, $cashier_paymaya);
+            $sheet2->getStyle('P' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('Q' . $row2, '');
             $sheet2->setCellValue('R' . $row2, '');
             $sheet2->setCellValue('S' . $row2, '');
+
             $sheet2->setCellValue('T' . $row2, $cashier_gcash);
+            $sheet2->getStyle('T' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('U' . $row2, $cashier_foodpanda);
+            $sheet2->getStyle('U' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('V' . $row2, '');
             $sheet2->setCellValue('W' . $row2, '');
+
             $sheet2->setCellValue('X' . $row2, $cashier_marketing);
+            $sheet2->getStyle('O' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('Y' . $row2, '');
+
             $sheet2->setCellValue('Z' . $row2, $cashier_lazada);
+            $sheet2->getStyle('Z' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('AA' . $row2, $cashier_shopee);
+            $sheet2->getStyle('AA' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('AB' . $row2, $cashier_grab);
+            $sheet2->getStyle('AB' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('AC' . $row2, '');
+
             $sheet2->setCellValue('AD' . $row2, $cashier_poodtrip);
+            $sheet2->getStyle('AD' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('AE' . $row2, $cashier_pickaroo);
+            $sheet2->getStyle('AE' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('AF' . $row2, $cashier_parahero);
+            $sheet2->getStyle('AF' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('AG' . $row2, $cashier_rarefoodshop);
+            $sheet2->getStyle('AG' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('AH' . $row2, '');
             $sheet2->setCellValue('AI' . $row2, $cashier_metromart);
+            $sheet2->getStyle('AI' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('AJ' . $row2, $cashier_zalora);
+            $sheet2->getStyle('AJ' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('AK' . $row2, $cashier_eatigo);
+            $sheet2->getStyle('AK' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('AL' . $row2, '');
+
             $sheet2->setCellValue('AM' . $row2, $cashier_sm);
+            $sheet2->getStyle('AM' . $row2)->getNumberFormat()->setFormatCode('0.00');
+            
             $sheet2->setCellValue('AN' . $row2, "=SUM(L{$row2}:AM{$row2})");
+            $sheet2->getStyle('AN' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('AO' . $row2, '');
+
             $sheet2->setCellValue('AP' . $row2, "=AN{$row2}+E{$row2}");
+            $sheet2->getStyle('AP' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('AQ' . $row2, '');
             $sheet2->setCellValue('AR' . $row2, '');
             $sheet2->setCellValue('AS' . $row2, '');
@@ -972,9 +1023,16 @@ class Svr extends CI_Controller {
             $sheet2->setCellValue('AY' . $row2, '');
             $sheet2->setCellValue('AZ' . $row2, '');
             $sheet2->setCellValue('BA' . $row2, '');
+
             $sheet2->setCellValue('BB' . $row2, $cashier_senior);
+            $sheet2->getStyle('BB' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('BC' . $row2, $cashier_pwd);
+            $sheet2->getStyle('BC' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('BD' . $row2, $cashier_otherdisc);
+            $sheet2->getStyle('BD' . $row2)->getNumberFormat()->setFormatCode('0.00');
+
             $sheet2->setCellValue('BE' . $row2, $transaction_count);
             $sheet2->setCellValue('BF' . $row2, '');
             $sheet2->setCellValue('BG' . $row2, '');
