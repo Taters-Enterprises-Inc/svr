@@ -918,6 +918,10 @@ class Svr extends CI_Controller {
 
             $terminal_id = $cashier_record->ftermid;
 
+            $total_noncash = $cashier_credit_card_sales + $cashier_gc + $cashier_paymaya + $cashier_gcash + $cashier_foodpanda + $cashier_marketing + $cashier_lazada + $cashier_shopee + $cashier_grab + $cashier_poodtrip + $cashier_pickaroo + $cashier_parahero + $cashier_rarefoodshop + $cashier_metromart + $cashier_zalora + $cashier_eatigo + $cashier_sm;
+
+            $total_payments = $cashier_calculatedCash + $total_noncash;
+
             // Insert data into the Excel sheet
             $sheet2->setCellValue('A' . $row2, $cashier_saleDate);
             $sheet2->setCellValue('B' . $row2, '');
@@ -1004,12 +1008,12 @@ class Svr extends CI_Controller {
             $sheet2->setCellValue('AM' . $row2, $cashier_sm);
             $sheet2->getStyle('AM' . $row2)->getNumberFormat()->setFormatCode('0.00');
             
-            $sheet2->setCellValue('AN' . $row2, "=SUM(L{$row2}:AM{$row2})");
+            $sheet2->setCellValue('AN' . $row2, $total_noncash);
             $sheet2->getStyle('AN' . $row2)->getNumberFormat()->setFormatCode('0.00');
 
             $sheet2->setCellValue('AO' . $row2, '');
 
-            $sheet2->setCellValue('AP' . $row2, "=AN{$row2}+E{$row2}");
+            $sheet2->setCellValue('AP' . $row2, $total_payments);
             $sheet2->getStyle('AP' . $row2)->getNumberFormat()->setFormatCode('0.00');
 
             $sheet2->setCellValue('AQ' . $row2, '');
