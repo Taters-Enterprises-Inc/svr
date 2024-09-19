@@ -21,9 +21,6 @@ class Svr extends CI_Controller {
 
     public function generate()
     {
-        // echo "Working!";
-        // die();
-
         ini_set("soap.wsdl_cache_enabled", "0");
         $client = new SoapClient("http://tei.alliancewebpos.com/appserv/app/w3p/w3p.wsdl", array("location" => "http://tei.alliancewebpos.com/appserv/app/w3p/W3PSoapServer.php"));
 
@@ -41,8 +38,6 @@ class Svr extends CI_Controller {
         $cashier_flast_key_value = "";
         $cashier_fdone_value = 0;
         $cashier_flast_key_value_array = array();
-
-        // $cashier_declaration_for_sales_trans_getsum = array();
         
         $cashier_p = 
         "<root>
@@ -238,11 +233,6 @@ class Svr extends CI_Controller {
             }
         }
 
-        // echo "<pre>";
-        // print_r($sales_trans_array);
-        // echo "</pre>";
-        // die();
-
         $sales_test_array = array();
 
         foreach ($sales_trans_array as $st) {
@@ -279,190 +269,9 @@ class Svr extends CI_Controller {
             }
         }
 
-        // echo "Working!";
-        // die();
-
-        // Initialize the PHPExcel object
+        // SVR Worksheet Start here
         $objPHPExcel = new PHPExcel();
         $objPHPExcel->setActiveSheetIndex(0);
-        $sheet = $objPHPExcel->getActiveSheet()->setTitle('Sales Transaction');
-
-        // Set headers in the Excel sheet
-        $headers = [
-            'A1' => 'fsale_date',
-            'B1' => 'fsale_time',
-            'C1' => 'fzcounter',
-            'D1' => 'ftermid',
-            'E1' => 'fdocument_no',
-            'F1' => 'faccountid',
-            'G1' => 'faccount_name',
-            'H1' => 'fthirdparty_accountid',
-            'I1' => 'fsiteid',
-            'J1' => 'fofficeid',
-            'K1' => 'ftotal_discount',
-            'L1' => 'fline_discount',
-            'M1' => 'fscdiscount',
-            'N1' => 'fpwd_discount',
-            'O1' => 'fdip_discount',
-            'P1' => 'fgross',
-            'Q1' => 'flocal_tax',
-            'R1' => 'famusement_tax',
-            'S1' => 'frefund',
-            'T1' => 'fservice_charge',
-            'U1' => 'fsubtotal',
-            'V1' => 'ftax',
-            'W1' => 'ftax_sale',
-            'X1' => 'fnotax_sale',
-            'Y1' => 'fzero_rated_sale',
-            'Z1' => 'fcash',
-            'AA1' => 'fcharge',
-            'AB1' => 'fcredit',
-            'AC1' => 'fcheck',
-            'AD1' => 'fothers',
-            'AE1' => 'fevat',
-            'AF1' => 'fvat_exempt',
-            'AG1' => 'fewt',
-            'AH1' => 'fcustomer_count',
-            'AI1' => 'fcashier_name',
-            'AJ1' => 'fcashierid',
-            'AK1' => 'fposted_date',
-            'AL1' => 'fupdated_date',
-            'AM1' => 'fcreated_date',
-            'AN1' => 'fserviced_by',
-            'AO1' => 'fclerk_name',
-            'AP1' => 'fcancel_memo',
-            'AQ1' => 'fcancel_name',
-        ];
-        
-        // Apply headers
-        foreach ($headers as $cell => $header) {
-            $sheet->setCellValue($cell, $header);
-        }
-
-        // Initialize row counter
-        $row = 2; // Start from the second row since first row is for headers
-
-        // Loop through each record
-        foreach ($sales_trans_array as $sales_transaction) {
-            foreach ($sales_transaction->record as $record) {
-               $saleDate = $record->fsale_date;
-               $saleTime = $record->fsale_time;
-               $fzCounter = $record->fzcounter;
-               $terminald = $record->ftermid;
-               $documentNo = $record->fdocument_no;
-               $accountld = $record->faccountid;
-               $accountName = $record->faccount_name;
-               $tpAccountld = $record->fthirdparty_accountid;
-               $fsiteid = $record->fsiteid;
-               $fofficeid = $record->fofficeid;
-               $ftotal_discount = $record->ftotal_discount;
-               $fline_discount = $record->fline_discount;
-               $fscdiscount = $record->fscdiscount;
-               $fpwd_discount = $record->fpwd_discount;
-               $fdip_discount = $record->fdip_discount;
-               $fgross = $record->fgross;
-               $flocal_tax = $record->flocal_tax;
-               $famusement_tax = $record->famusement_tax;
-               $frefund = $record->frefund;
-               $fservice_charge = $record->fservice_charge;
-               $fsubtotal = $record->fsubtotal;
-               $ftax = $record->ftax;
-               $ftax_sale = $record->ftax_sale;
-               $fnotax_sale = $record->fnotax_sale;
-               $fzero_rated_sale = $record->fzero_rated_sale;
-               $fcash = $record->fcash;
-               $fcharge = $record->fcharge;
-               $fcredit = $record->fcredit;
-               $fcheck = $record->fcheck;
-               $fothers = $record->fothers;
-               $fevat = $record->fevat;
-               $fvat_exempt = $record->fvat_exempt;
-               $fewt = $record->fewt;
-               $fcustomer_count = $record->fcustomer_count;
-               $fcashier_name = $record->fcashier_name;
-               $fcashierid = $record->fcashierid;
-               $fposted_date = $record->fposted_date;
-               $fupdated_date = $record->fupdated_date;
-               $fcreated_date = $record->fcreated_date;
-               $fserviced_by = $record->fserviced_by;
-               $fclerk_name = $record->fclerk_name;
-               $fcancel_memo = $record->fcancel_memo;
-               $fcancel_name = $record->fcancel_name;
-
-               // Insert data into the Excel sheet
-               $sheet->setCellValue('A' . $row, $saleDate);
-               $sheet->setCellValue('B' . $row, $saleTime);
-               $sheet->setCellValue('C' . $row, $fzCounter);
-               $sheet->setCellValue('D' . $row, $terminald);
-               $sheet->setCellValue('E' . $row, $documentNo);
-               $sheet->setCellValue('F' . $row, $accountld);
-               $sheet->setCellValue('G' . $row, $accountName);
-               $sheet->setCellValue('H' . $row, $tpAccountld);
-               $sheet->setCellValue('I' . $row, $fsiteid);
-               $sheet->setCellValue('J' . $row, $fofficeid);
-               $sheet->setCellValue('K' . $row, $ftotal_discount);
-               $sheet->setCellValue('L' . $row, $fline_discount);
-               $sheet->setCellValue('M' . $row, $fscdiscount);
-               $sheet->setCellValue('N' . $row, $fpwd_discount);
-               $sheet->setCellValue('O' . $row, $fdip_discount);
-               $sheet->setCellValue('P' . $row, $fgross);
-               $sheet->setCellValue('Q' . $row, $flocal_tax);
-               $sheet->setCellValue('R' . $row, $famusement_tax);
-               $sheet->setCellValue('S' . $row, $frefund);
-               $sheet->setCellValue('T' . $row, $fservice_charge);
-               $sheet->setCellValue('U' . $row, $fsubtotal);
-               $sheet->setCellValue('V' . $row, $ftax);
-               $sheet->setCellValue('W' . $row, $ftax_sale);
-               $sheet->setCellValue('X' . $row, $fnotax_sale);
-               $sheet->setCellValue('Y' . $row, $fzero_rated_sale);
-               $sheet->setCellValue('Z' . $row, $fcash);
-               $sheet->setCellValue('AA' . $row, $fcharge);
-               $sheet->setCellValue('AB' . $row, $fcredit);
-               $sheet->setCellValue('AC' . $row, $fcheck);
-               $sheet->setCellValue('AD' . $row, $fothers);
-               $sheet->setCellValue('AE' . $row, $fevat);
-               $sheet->setCellValue('AF' . $row, $fvat_exempt);
-               $sheet->setCellValue('AG' . $row, $fewt);
-               $sheet->setCellValue('AH' . $row, $fcustomer_count);
-               $sheet->setCellValue('AI' . $row, $fcashier_name);
-               $sheet->setCellValue('AJ' . $row, $fcashierid);
-               $sheet->setCellValue('AK' . $row, $fposted_date);
-               $sheet->setCellValue('AL' . $row, $fupdated_date);
-               $sheet->setCellValue('AM' . $row, $fcreated_date);
-               $sheet->setCellValue('AN' . $row, $fserviced_by);
-               $sheet->setCellValue('AO' . $row, $fclerk_name);
-               $sheet->setCellValue('AP' . $row, $fcancel_memo);
-               $sheet->setCellValue('AQ' . $row, $fcancel_name);
-
-               // Move to the next row for the next product/payment
-               $row++;
-            }
-        }
-
-        // foreach($cashier_declaration_array[0] as $pota) {
-        //     echo $pota->fcashier_name . " " . "<br>";
-        // }
-        // die();
-
-        // $sum_of_sales = 0;     
-        // foreach ($sales_test_array as $st_wew_record) {
-        //     // echo "Fsaledate in SALES: " . $st_wew_record->fsale_date . "<br>";
-        //     $test_sales_fsaledate = $st_wew_record->fsale_date;
-        //     $test_sales_fcashiername = $st_wew_record->fcashier_name;
-        //     $test_sales_termid = $st_wew_record->ftermid;
-            
-        //     $credithaha = $st_wew_record->fcredit;
-
-        //     foreach($cashier_declaration_array[0] as $pota) {
-        //         echo $pota->fsale_date . " ---- " . $test_sales_fsaledate . " ---- " . $credithaha . "<br>";
-        //     }
-        // }
-
-        // die();
-
-        // SVR Worksheet Start here
-        $objPHPExcel->createSheet();
-        $objPHPExcel->setActiveSheetIndex(1);
         $sheet2 = $objPHPExcel->getActiveSheet()->setTitle('Sales Variance Report');
 
         // Set headers in the Excel sheet
@@ -680,17 +489,6 @@ class Svr extends CI_Controller {
             $gc_result = $query_for_gc->row();
             $cashier_gc = $gc_result->famount;
             //
-
-            // $query = $this->db->get();
-            // $this->db->select_sum('fcredit');
-            // $this->db->where('fsale_date', $cashier_record->fsale_date);
-            // $this->db->where('fcashier_name', $cashier_record->fcashier_name);
-            // $this->db->where('ftermid', $cashier_record->ftermid);
-            // $query_for_cc_sales = $this->db->get('parent_tb');
-
-            // $cc_sales_result = $query_for_cc_sales->row();
-            // $cashier_credit_card_sales = $cc_sales_result->fcredit;
-            // End
 
             // To get sum of paymaya
             $this->db->select_sum('famount');
@@ -1045,9 +843,6 @@ class Svr extends CI_Controller {
             
             $row2++;
         }
-
-        // Set the first sheet as active before saving
-        $objPHPExcel->setActiveSheetIndex(1);
 
         // Set headers for the output Excel file
         $filenameDate = date("F j, Y", strtotime($this->input->post('fromDate'))) . " - " . date("F j, Y", strtotime($this->input->post('toDate')));
