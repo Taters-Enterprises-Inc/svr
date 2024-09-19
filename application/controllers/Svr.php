@@ -669,6 +669,18 @@ class Svr extends CI_Controller {
                 $cashier_credit_card_sales += $row_cc_sales->fcredit;
             }
 
+            // To get sum of GC
+            $this->db->select_sum('famount');
+            $this->db->where('fsale_date', $cashier_record->fsale_date);
+            $this->db->where('fcashier_name', $cashier_record->fcashier_name);
+            $this->db->where('ftermid', $cashier_record->ftermid);
+            $this->db->where_in('finfo2', ['101', '102']);
+            $query_for_gc = $this->db->get('parent_tb');
+
+            $gc_result = $query_for_gc->row();
+            $cashier_gc = $gc_result->famount;
+            //
+
             // $query = $this->db->get();
             // $this->db->select_sum('fcredit');
             // $this->db->where('fsale_date', $cashier_record->fsale_date);
@@ -921,7 +933,7 @@ class Svr extends CI_Controller {
             $sheet2->setCellValue('L' . $row2, $cashier_credit_card_sales);
             $sheet2->setCellValue('M' . $row2, '');
             $sheet2->setCellValue('N' . $row2, '');
-            $sheet2->setCellValue('O' . $row2, '');
+            $sheet2->setCellValue('O' . $row2, $cashier_gc);
             $sheet2->setCellValue('P' . $row2, $cashier_paymaya);
             $sheet2->setCellValue('Q' . $row2, '');
             $sheet2->setCellValue('R' . $row2, '');
