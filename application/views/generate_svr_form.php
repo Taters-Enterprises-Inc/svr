@@ -63,8 +63,27 @@
             font-size: 1.5rem;
         }
 
-        .logout-icon:hover {
-            color: #f0f0f0;
+        .logout-text {
+            color: #fff;
+            font-size: 1rem;
+            margin-left: 5px;
+        }
+
+        .logout-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none; /* Remove the default underline */
+            color: inherit; /* Inherit the text color */
+        }
+
+        .logout-link:hover {
+            text-decoration: none; /* Ensure no underline on hover */
+            color: inherit; /* Prevent blue color on hover */
+        }
+
+        .logout-link:hover .logout-text,
+        .logout-link:hover .logout-icon {
+            color: #f0f0f0; /* Lighter color on hover */
         }
     </style>
 </head>
@@ -76,8 +95,9 @@
                     <img src="<?php echo base_url(); ?>assets/images/logos/taters-logo.png" alt="Avatar" style="height: 40px;">
                 </a>
                 <div class="ml-auto">
-                    <a class="nav-link logout-icon" href="<?php echo base_url('logout'); ?>" title="Logout">
-                        <i class="fas fa-sign-out-alt"></i>
+                    <a class="logout-link" href="<?php echo base_url('logout'); ?>" title="Logout">
+                        <i class="fas fa-sign-out-alt logout-icon"></i>
+                        <span class="logout-text">Logout</span>
                     </a>
                 </div>
             </div>
