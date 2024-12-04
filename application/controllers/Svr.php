@@ -26,6 +26,7 @@ class Svr extends CI_Controller {
 
         $fromDate = str_replace('-', '', $this->input->post('fromDate'));
         $toDate = str_replace('-', '', $this->input->post('toDate'));
+        $apiID = str_replace('-', '', $this->input->post('teiStore'));
 
         if (empty($fromDate) || empty($toDate)) {
             redirect('/generate');
@@ -42,7 +43,7 @@ class Svr extends CI_Controller {
         $cashier_p = 
         "<root>
             <id>
-                <fw3p_id>22020882</fw3p_id>
+                <fw3p_id>$apiID</fw3p_id>
                 <fw3p_key>12345</fw3p_key>
             </id>
             <data>
@@ -73,7 +74,7 @@ class Svr extends CI_Controller {
             $cashier_p1 = 
             "<root>
                 <id>
-                    <fw3p_id>22020882</fw3p_id>
+                    <fw3p_id>$apiID</fw3p_id>
                     <fw3p_key>12345</fw3p_key>
                 </id>
                 <data>
@@ -107,7 +108,7 @@ class Svr extends CI_Controller {
             $cashier_p2 = 
             "<root>
                 <id>
-                    <fw3p_id>22020882</fw3p_id>
+                    <fw3p_id>$apiID</fw3p_id>
                     <fw3p_key>12345</fw3p_key>
                 </id>
                 <data>
@@ -143,7 +144,7 @@ class Svr extends CI_Controller {
         $p = 
         "<root>
             <id>
-                <fw3p_id>22020882</fw3p_id>
+                <fw3p_id>$apiID</fw3p_id>
                 <fw3p_key>12345</fw3p_key>
             </id>
             <data>
@@ -174,7 +175,7 @@ class Svr extends CI_Controller {
             $p1 = 
             "<root>
                 <id>
-                    <fw3p_id>22020882</fw3p_id>
+                    <fw3p_id>$apiID</fw3p_id>
                     <fw3p_key>12345</fw3p_key>
                 </id>
                 <data>
@@ -208,7 +209,7 @@ class Svr extends CI_Controller {
             $p2 = 
             "<root>
                 <id>
-                    <fw3p_id>22020882</fw3p_id>
+                    <fw3p_id>$apiID</fw3p_id>
                     <fw3p_key>12345</fw3p_key>
                 </id>
                 <data>
