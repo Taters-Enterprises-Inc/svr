@@ -441,6 +441,90 @@ class Svr extends CI_Controller {
             ],
         ]);
 
+        $paymaya = "";
+        $gcash = "";
+        $food_panda = "";
+        $marketing = "";
+        $lazada = "";
+        $shopee = "";
+        $grab = "";
+        $poodtrip = "";
+        $pick_a_roo = "";
+        $parahero = "";
+        $rare_food_shop = "";
+        $metromart = "";
+        $zalora = "";
+        $eatigo = "";
+        $sm_online = "";
+
+        $this->db->select('*')->from('gift_certificate')
+                 ->where('store_api_id', $apiID);
+        
+        $query_for_gift_certificate = $this->db->get();
+        $gift_certificate_result = $query_for_gift_certificate->result();
+
+        foreach ($gift_certificate_result as $row_gift_certificate) {
+            if ($row_gift_certificate->gc_short_name == 'paymaya') {
+                $paymaya = $row_gift_certificate->gc_type_id;
+            }
+            
+            if ($row_gift_certificate->gc_short_name == 'gcash') {
+                $gcash = $row_gift_certificate->gc_type_id;
+            }
+
+            if ($row_gift_certificate->gc_short_name == 'food_panda') {
+                $food_panda = $row_gift_certificate->gc_type_id;
+            }
+
+            if ($row_gift_certificate->gc_short_name == 'marketing') {
+                $marketing = $row_gift_certificate->gc_type_id;
+            }
+
+            if ($row_gift_certificate->gc_short_name == 'lazada') {
+                $lazada = $row_gift_certificate->gc_type_id;
+            }
+
+            if ($row_gift_certificate->gc_short_name == 'shopee') {
+                $shopee = $row_gift_certificate->gc_type_id;
+            }
+
+            if ($row_gift_certificate->gc_short_name == 'grab') {
+                $grab = $row_gift_certificate->gc_type_id;
+            }
+
+            if ($row_gift_certificate->gc_short_name == 'poodtrip') {
+                $poodtrip = $row_gift_certificate->gc_type_id;
+            }
+
+            if ($row_gift_certificate->gc_short_name == 'pick_a_roo') {
+                $pick_a_roo = $row_gift_certificate->gc_type_id;
+            }
+
+            if ($row_gift_certificate->gc_short_name == 'parahero') {
+                $parahero = $row_gift_certificate->gc_type_id;
+            }
+
+            if ($row_gift_certificate->gc_short_name == 'rare_food_shop') {
+                $rare_food_shop = $row_gift_certificate->gc_type_id;
+            }
+
+            if ($row_gift_certificate->gc_short_name == 'metromart') {
+                $metromart = $row_gift_certificate->gc_type_id;
+            }
+
+            if ($row_gift_certificate->gc_short_name == 'zalora') {
+                $zalora = $row_gift_certificate->gc_type_id;
+            }
+
+            if ($row_gift_certificate->gc_short_name == 'eatigo') {
+                $eatigo = $row_gift_certificate->gc_type_id;
+            }
+
+            if ($row_gift_certificate->gc_short_name == 'sm_online') {
+                $sm_online = $row_gift_certificate->gc_type_id;
+            }
+        }
+
         // Initialize row counter
         $row2 = 2; // Start from the second row since first row is for headers
 
@@ -496,7 +580,7 @@ class Svr extends CI_Controller {
             $this->db->where('fsale_date', $cashier_record->fsale_date);
             $this->db->where('fcashier_name', $cashier_record->fcashier_name);
             $this->db->where('ftermid', $cashier_record->ftermid);
-            $this->db->where('finfo2', '107');
+            $this->db->where('finfo2', $paymaya);
             $query_for_paymaya = $this->db->get('parent_tb');
 
             $paymaya_result = $query_for_paymaya->row();
@@ -508,7 +592,7 @@ class Svr extends CI_Controller {
             $this->db->where('fsale_date', $cashier_record->fsale_date);
             $this->db->where('fcashier_name', $cashier_record->fcashier_name);
             $this->db->where('ftermid', $cashier_record->ftermid);
-            $this->db->where('finfo2', '106');
+            $this->db->where('finfo2', $gcash);
             $query_for_gcash = $this->db->get('parent_tb');
 
             $gcash_result = $query_for_gcash->row();
@@ -520,7 +604,7 @@ class Svr extends CI_Controller {
             $this->db->where('fsale_date', $cashier_record->fsale_date);
             $this->db->where('fcashier_name', $cashier_record->fcashier_name);
             $this->db->where('ftermid', $cashier_record->ftermid);
-            $this->db->where('finfo2', '103');
+            $this->db->where('finfo2', $food_panda);
             $query_for_foodpanda = $this->db->get('parent_tb');
 
             $foodpanda_result = $query_for_foodpanda->row();
@@ -532,7 +616,7 @@ class Svr extends CI_Controller {
             $this->db->where('fsale_date', $cashier_record->fsale_date);
             $this->db->where('fcashier_name', $cashier_record->fcashier_name);
             $this->db->where('ftermid', $cashier_record->ftermid);
-            $this->db->where('finfo2', '126');
+            $this->db->where('finfo2', $marketing);
             $query_for_marketing = $this->db->get('parent_tb');
 
             $marketing_result = $query_for_marketing->row();
@@ -544,7 +628,7 @@ class Svr extends CI_Controller {
             $this->db->where('fsale_date', $cashier_record->fsale_date);
             $this->db->where('fcashier_name', $cashier_record->fcashier_name);
             $this->db->where('ftermid', $cashier_record->ftermid);
-            $this->db->where('finfo2', '111');
+            $this->db->where('finfo2', $lazada);
             $query_for_lazada = $this->db->get('parent_tb');
 
             $lazada_result = $query_for_lazada->row();
@@ -556,7 +640,7 @@ class Svr extends CI_Controller {
             $this->db->where('fsale_date', $cashier_record->fsale_date);
             $this->db->where('fcashier_name', $cashier_record->fcashier_name);
             $this->db->where('ftermid', $cashier_record->ftermid);
-            $this->db->where('finfo2', '124');
+            $this->db->where('finfo2', $shopee);
             $query_for_shopee = $this->db->get('parent_tb');
 
             $shopee_result = $query_for_shopee->row();
@@ -568,7 +652,7 @@ class Svr extends CI_Controller {
             $this->db->where('fsale_date', $cashier_record->fsale_date);
             $this->db->where('fcashier_name', $cashier_record->fcashier_name);
             $this->db->where('ftermid', $cashier_record->ftermid);
-            $this->db->where('finfo2', '112');
+            $this->db->where('finfo2', $grab);
             $query_for_grab = $this->db->get('parent_tb');
 
             $grab_result = $query_for_grab->row();
@@ -580,7 +664,7 @@ class Svr extends CI_Controller {
             $this->db->where('fsale_date', $cashier_record->fsale_date);
             $this->db->where('fcashier_name', $cashier_record->fcashier_name);
             $this->db->where('ftermid', $cashier_record->ftermid);
-            $this->db->where('finfo2', '115');
+            $this->db->where('finfo2', $poodtrip);
             $query_for_poodtrip = $this->db->get('parent_tb');
 
             $poodtrip_result = $query_for_poodtrip->row();
@@ -592,7 +676,7 @@ class Svr extends CI_Controller {
             $this->db->where('fsale_date', $cashier_record->fsale_date);
             $this->db->where('fcashier_name', $cashier_record->fcashier_name);
             $this->db->where('ftermid', $cashier_record->ftermid);
-            $this->db->where('finfo2', '117');
+            $this->db->where('finfo2', $pick_a_roo);
             $query_for_pickaroo = $this->db->get('parent_tb');
 
             $pickaroo_result = $query_for_pickaroo->row();
@@ -604,7 +688,7 @@ class Svr extends CI_Controller {
             $this->db->where('fsale_date', $cashier_record->fsale_date);
             $this->db->where('fcashier_name', $cashier_record->fcashier_name);
             $this->db->where('ftermid', $cashier_record->ftermid);
-            $this->db->where('finfo2', '118');
+            $this->db->where('finfo2', $parahero);
             $query_for_parahero = $this->db->get('parent_tb');
 
             $parahero_result = $query_for_parahero->row();
@@ -616,7 +700,7 @@ class Svr extends CI_Controller {
             $this->db->where('fsale_date', $cashier_record->fsale_date);
             $this->db->where('fcashier_name', $cashier_record->fcashier_name);
             $this->db->where('ftermid', $cashier_record->ftermid);
-            $this->db->where('finfo2', '121');
+            $this->db->where('finfo2', $rare_food_shop);
             $query_for_rarefoodshop = $this->db->get('parent_tb');
 
             $rarefoodshop_result = $query_for_rarefoodshop->row();
@@ -628,7 +712,7 @@ class Svr extends CI_Controller {
             $this->db->where('fsale_date', $cashier_record->fsale_date);
             $this->db->where('fcashier_name', $cashier_record->fcashier_name);
             $this->db->where('ftermid', $cashier_record->ftermid);
-            $this->db->where('finfo2', '127');
+            $this->db->where('finfo2', $metromart);
             $query_for_metromart = $this->db->get('parent_tb');
 
             $metromart_result = $query_for_metromart->row();
@@ -640,7 +724,7 @@ class Svr extends CI_Controller {
             $this->db->where('fsale_date', $cashier_record->fsale_date);
             $this->db->where('fcashier_name', $cashier_record->fcashier_name);
             $this->db->where('ftermid', $cashier_record->ftermid);
-            $this->db->where('finfo2', '125');
+            $this->db->where('finfo2', $zalora);
             $query_for_zalora = $this->db->get('parent_tb');
 
             $zalora_result = $query_for_zalora->row();
@@ -652,7 +736,7 @@ class Svr extends CI_Controller {
             $this->db->where('fsale_date', $cashier_record->fsale_date);
             $this->db->where('fcashier_name', $cashier_record->fcashier_name);
             $this->db->where('ftermid', $cashier_record->ftermid);
-            $this->db->where('finfo2', '128');
+            $this->db->where('finfo2', $eatigo);
             $query_for_eatigo = $this->db->get('parent_tb');
 
             $eatigo_result = $query_for_eatigo->row();
@@ -664,7 +748,7 @@ class Svr extends CI_Controller {
             $this->db->where('fsale_date', $cashier_record->fsale_date);
             $this->db->where('fcashier_name', $cashier_record->fcashier_name);
             $this->db->where('ftermid', $cashier_record->ftermid);
-            $this->db->where('finfo2', '130');
+            $this->db->where('finfo2', $sm_online);
             $query_for_sm = $this->db->get('parent_tb');
 
             $sm_result = $query_for_sm->row();
