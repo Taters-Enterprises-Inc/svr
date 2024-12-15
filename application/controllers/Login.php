@@ -24,7 +24,7 @@ class Login extends CI_Controller {
             );
 
             $this->session->set_userdata($session_data);
-            redirect('/generate');
+            redirect('/dashboard');
         } else {
             redirect('/');
         }
